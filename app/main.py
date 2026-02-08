@@ -51,7 +51,16 @@ st.set_page_config(page_title="Processador de PDFs", layout="centered")
 
 st.title("Processador de PDFs")
 st.caption("Upload de PDF → processamento → downloads (PDFs e ZIP).")
+# 👇 CONTEXTO / INSTRUÇÕES AQUI
+with st.expander("ℹ️ Informações e instruções", expanded=True):
+    st.markdown("""
+    - Faz upload de um ficheiro PDF.
+    - O sistema divide o PDF por páginas.
+    - Cada página é analisada para identificar o número de processo.
+    - No final podes descarregar os PDFs individuais ou um ZIP.
 
+    **Nota:** PDFs digitalizados podem demorar mais tempo devido ao OCR.
+    """)
 uploaded = st.file_uploader("Escolhe um ficheiro PDF", type=["pdf"])
 
 if uploaded is not None:
