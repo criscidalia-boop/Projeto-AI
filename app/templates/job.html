@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Páginas extraídas</h2>
+{% if files %}
+    <a class="btn btn-secondary mb-3" href="/download_zip/{{ jobid }}">Download ZIP</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome Lógico</th>
+                <th>Tamanho (bytes)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for file in files %}
+            <tr>
+                <td>{{ file.logical_name }}</td>
+                <td>{{ file.size }}</td>
+                <td><a href="/download/{{ jobid }}/{{ file.fs_name }}" class="btn btn-sm btn-outline-primary">Download</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhum PDF gerado.</p>
+{% endif %}
+{% endblock %}
